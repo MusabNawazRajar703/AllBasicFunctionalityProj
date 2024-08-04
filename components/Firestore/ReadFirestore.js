@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, FlatList, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 
 const ReadFirestore = () => {
@@ -32,8 +32,13 @@ const ReadFirestore = () => {
     );
   }
 
+  const handlePress = (item) => {
+    // Handle item press here
+    console.log('Item pressed:', item);
+  };
+
   const renderItem = ({ item }) => (
-    <View style={styles.itemContainer}>
+    <TouchableOpacity style={styles.itemContainer} onPress={() => handlePress(item)}>
       <Text style={styles.itemText}>Name: {item.name}</Text>
       <Text style={styles.itemText}>Gender: {item.gender}</Text>
       <Text style={styles.itemText}>Age: {item.age}</Text>
@@ -41,7 +46,7 @@ const ReadFirestore = () => {
       <Text style={styles.itemText}>City: {item.city}</Text>
       <Text style={styles.itemText}>ID Card: {item.idCard}</Text>
       <Text style={styles.itemText}>Salary: {item.salary}</Text>
-    </View>
+    </TouchableOpacity>
   );
 
   return (
@@ -64,13 +69,19 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   itemContainer: {
-    backgroundColor: '#f9f9f9',
+    backgroundColor: '#fff',
     padding: 15,
     marginBottom: 10,
-    borderRadius: 5,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3, // Android shadow
   },
   itemText: {
     fontSize: 16,
+    color: '#333',
   },
 });
 
