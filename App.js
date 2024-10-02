@@ -1,21 +1,23 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import FireStoreForm from './components/Firestore/FireStoreForm';
-import ReadFirestore from './components/Firestore/ReadFirestore';
 
+import AuthStack from './src/screens/AuthScreens/AuthStack';
+import UnAuthStack from './src/screens/UnAuthScreen/UnAuthStack';
+import {Provider, useSelector} from 'react-redux';
+import store, {persistor} from './src/store/store';
+import {PersistGate} from 'redux-persist/integration/react';
 
-const App = () => {
-  return (
-    <SafeAreaView style={styles.container}>
-      <ReadFirestore />
-    </SafeAreaView>
-  );
+function App() {
+  const user = useSelector(state => state.user);
+  console.log('user=========>>>', user);
+  return user.email !== null ? <UnAuthStack /> : <AuthStack />;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
-export default App;
+export default function RootApp() {
+  return (
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
+    </Provider>
+  );
+}

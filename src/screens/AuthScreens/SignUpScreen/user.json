@@ -1,0 +1,29 @@
+{
+  "additionalUserInfo": {"isNewUser": false},
+  "user": {
+    "multiFactor": {"enrolledFactors": []},
+    "metadata": {
+      "lastSignInTiime": 1726679877502,
+      "creationTime": 1726593388394
+    },
+    "photoURL": null,
+    "phoneNumber": null,
+    "tenantId": null,
+    "displayName": null,
+    "emailVerified": false,
+    "isAnonymous": false,
+    "uid": "iPgAxaGRvaXDyLIjIrZMwOAOttk1",
+    "email": "musabnawaz@gmail.com",
+    "providerData": [
+      {
+        "email": "musabnawaz@gmail.com",
+        "providerId": "password",
+        "photoURL": null,
+        "phoneNumber": null,
+        "displayName": null,
+        "uid": "musabnawaz@gmail.com"
+      }
+    ],
+    "providerId": "firebase"
+  }
+}
